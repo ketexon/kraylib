@@ -86,6 +86,9 @@
 #define RAYLIB_H
 
 #include <stdarg.h>     // Required for: va_list - Only used by TraceLogCallback
+#if defined(__cplusplus)
+#include <tuple>
+#endif
 
 #define RAYLIB_VERSION_MAJOR 5
 #define RAYLIB_VERSION_MINOR 6
@@ -1711,6 +1714,12 @@ RLAPI void AttachAudioMixedProcessor(AudioCallback processor); // Attach audio s
 RLAPI void DetachAudioMixedProcessor(AudioCallback processor); // Detach audio stream processor from the entire audio pipeline
 
 #if defined(__cplusplus)
+}
+#endif
+
+#if defined(__cplusplus)
+inline std::tuple<int, int> GetScreenSize() {
+    return std::make_tuple(GetScreenWidth(), GetScreenHeight());
 }
 #endif
 
